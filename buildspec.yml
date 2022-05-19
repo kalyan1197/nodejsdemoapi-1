@@ -19,7 +19,7 @@ phases:
     commands:
       - echo push the image to ECR
       - docker push 874913666592.dkr.ecr.us-east-1.amazonaws.com/nodejsdemo:latest
-      - printf '[{"name":"%s","imageUrl":"%s"}]' nodejsdemo 874913666592.dkr.ecr.us-east-1.amazonaws.com/nodejsdemo:latest > imagedefinitions.json 
+      - printf '{"name":"%s","imageUrl":"%s"}' nodejsdemo 874913666592.dkr.ecr.us-east-1.amazonaws.com/nodejsdemo:latest > imagedefinitions.json 
 artifacts:
  files:
     - imagedefinitions.json
