@@ -8,7 +8,8 @@ phases:
     commands:
       - echo install dependencies
       - npm install
-      - aws ecr get-login-password --region us-east-1
+      - aws ecr get-login-password --region region | docker login --username AWS --password-stdin 874913666592.dkr.ecr.us-east-1.amazonaws.com
+      
   build:
     commands:
       - echo build docker image and tag it
