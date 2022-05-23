@@ -8,18 +8,18 @@ phases:
     commands:
       - echo install dependencies
       - npm install
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 874913666592.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr get-login-password --region central-ca-1 | docker login --username AWS --password-stdin 601845944721.dkr.ecr.central-ca-1.amazonaws.com
       
   build:
     commands:
       - echo build docker image and tag it
       - docker build -t nodejsdemo:latest .
-      - docker tag nodejsdemo:latest 874913666592.dkr.ecr.us-east-1.amazonaws.com/nodejsdemo:latest
+      - docker tag nodejsdemo:latest 601845944721.dkr.ecr.central-ca-1.amazonaws.com/nodejsdemo:latest
   post_build:
     commands:
       - echo push the image to ECR
-      - docker push 874913666592.dkr.ecr.us-east-1.amazonaws.com/nodejsdemo:latest
-      - printf '[{"name":"%s","imageUrl":"%s"}]' nodejsdemo 874913666592.dkr.ecr.us-east-1.amazonaws.com/nodejsdemo:latest > imagedefinitions.json 
+      - docker push 601845944721.dkr.ecr.central-ca-1.amazonaws.com/nodejsdemo:latest
+      - printf '[{"name":"%s","imageUrl":"%s"}]' nodejsdemo 601845944721.dkr.ecr.central-ca-1.amazonaws.com/nodejsdemo:latest > imagedefinitions.json 
 artifacts:
  files:
     - imagedefinitions.json
