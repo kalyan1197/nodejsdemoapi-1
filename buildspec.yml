@@ -13,12 +13,12 @@ phases:
   build:
     commands:
       - echo build docker image and tag it
-      - docker build -t nodejsdemo:latest .
-      - docker tag nodejsdemo:latest 601845944721.dkr.ecr.central-ca-1.amazonaws.com/nodejsdemo:latest
+      - docker build -t nodejsdemo .
+      - docker tag nodejsdemo:latest 601845944721.dkr.ecr.ca-central-1.amazonaws.com/nodejsdemo:latest
   post_build:
     commands:
       - echo push the image to ECR
-      - docker push 601845944721.dkr.ecr.central-ca-1.amazonaws.com/nodejsdemo:latest
+      - docker push 601845944721.dkr.ecr.ca-central-1.amazonaws.com/nodejsdemo:latest
       - printf '[{"name":"%s","imageUrl":"%s"}]' nodejsdemo 601845944721.dkr.ecr.central-ca-1.amazonaws.com/nodejsdemo:latest > imagedefinitions.json 
 artifacts:
  files:
